@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1066652884249",
+    "project_id": "frites-ieee",
+    "storage_bucket": "frites-ieee.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1066652884249:android:8b381074779571aaf17988",
+        "android_client_info": {
+          "package_name": "com.example.apppp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1066652884249-p865oc39lpep26m8mvauvmj4et9mo6ta.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJPW8U6DjlS75hD7dTedsCcs6XbFvb1-g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1066652884249-p865oc39lpep26m8mvauvmj4et9mo6ta.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
