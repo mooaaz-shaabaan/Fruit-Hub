@@ -34,8 +34,7 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
         textDirection: TextDirection.rtl,
         child: Padding(
           padding: const EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: ListView(
             children: [
               // ✅ الخطوات
               Row(
@@ -147,7 +146,7 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
                   ],
                 ),
               ),
-              const Spacer(),
+              const Gap(240),
 
               CustomButon(
                 onTap: () {

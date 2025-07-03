@@ -11,21 +11,32 @@ class Bestsaller extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'الأكثر مبيعًا', isBack: true,notification: false),
+      appBar: CustomAppBar(
+        title: 'الأكثر مبيعًا',
+        isBack: true,
+        notification: false,
+      ),
       body: Padding(
         padding: const EdgeInsets.only(right: 15, left: 14),
-        child: ListView(
-          children: [
-            Text(
-              'الأكثر مبيعا',
+        child: Directionality(
+          textDirection: TextDirection.ltr,
+          child: ListView(
+            children: [
+              Text(
+                'الأكثر مبيعا',
 
-              textAlign: TextAlign.right,
-              style: TextStyle(fontSize: 25, fontWeight: FontWeight.w700),
-            ),
-            Gap(20),
-            Proudcts(fruits: fruits, itemCount: fruits.length, onTAp: false,
-                    heartIsRed: false,),
-          ],
+                textAlign: TextAlign.right,
+                style: TextStyle(fontSize: 25, fontWeight: FontWeight.w700),
+              ),
+              Gap(20),
+              Proudcts(
+                fruits: fruits,
+                itemCount: fruits.length,
+                onTAp: false,
+                heartIsRed: false,
+              ),
+            ],
+          ),
         ),
       ),
     );

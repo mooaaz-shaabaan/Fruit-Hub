@@ -35,6 +35,7 @@ class Proudcts extends StatelessWidget {
       ),
       itemBuilder: (context, i) {
         final item = fruits[i];
+
         return GestureDetector(
           onTap: onTAp ? () => onTap?.call(i) : null,
           child: Container(

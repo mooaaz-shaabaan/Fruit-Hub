@@ -1,4 +1,4 @@
-import 'package:apppp/Screens/Home%20Page/homePage.dart';
+import 'package:apppp/navBar/navbar.dart';
 import 'package:apppp/widgets/cart/customButon.dart';
 import 'package:apppp/widgets/customAppBar.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +38,7 @@ class SuccessOrder extends StatelessWidget {
                 CustomButon(
                   onTap: () => Navigator.pushAndRemoveUntil(
                     context,
-                    MaterialPageRoute(builder: (c) => Homepage()),
+                    MaterialPageRoute(builder: (c) => MainScreen()),
                     (route) => false,
                   ),
                   title: 'الرئيسية',

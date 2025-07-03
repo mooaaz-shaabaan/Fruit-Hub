@@ -17,7 +17,9 @@ class ItemDetailsScreen extends StatefulWidget {
 
 class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
   int quantity = 1;
+  bool favorite = false;
   static const Color darkGreen = Color(0xFF1E814B);
+
   @override
   Widget build(BuildContext context) {
     return Directionality(
@@ -33,15 +35,22 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
           ),
           actions: [
             IconButton(
-              icon: const Icon(Icons.favorite_border, color: Colors.black),
+              icon: IconButton(
+                onPressed: () {
+                  setState(() {
+                    favorite = !favorite;
+                  });
+                },
+                icon: favorite
+                    ? Icon(Icons.favorite, color: Colors.red)
+                    : Icon(Icons.favorite_border, color: Colors.black),
+              ),
               onPressed: () {
-                print("Favorite icon pressed");
               },
             ),
             IconButton(
               icon: const Icon(Icons.share, color: Colors.black),
               onPressed: () {
-                print("Share icon pressed");
               },
             ),
             const SizedBox(width: 8),
@@ -214,7 +223,7 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                         name: widget.name,
                         price: widget.price,
                         image: widget.image,
-                        totalPrice: int.parse(widget.price) * 1,
+                        totalPrice: int.parse(widget.price) * quantity,
                         quantity: 1,
                       );
                       CartStorage.cartList.add(item);
@@ -231,9 +240,7 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                             onPressed: () {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(
-                                  builder: (c) => CartScreen(),
-                                ),
+                                MaterialPageRoute(builder: (c) => CartScreen()),
                               );
                             },
                           ),

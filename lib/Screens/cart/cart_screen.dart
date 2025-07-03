@@ -1,6 +1,7 @@
 import 'package:apppp/Screens/cart/shipping_option.dart';
 import 'package:apppp/models/cartModel.dart';
 import 'package:apppp/widgets/cart/customButon.dart';
+import 'package:apppp/widgets/customAppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -17,7 +18,8 @@ class _CartScreenState extends State<CartScreen> {
   double get totalPrice {
     double total = 0.0;
     for (var item in CartStorage.cartList) {
-      total += double.tryParse(item.price)?.toDouble() ?? 0 * item.quantity;
+      final price = double.tryParse(item.price) ?? 0;
+      total += price * item.quantity;
     }
     return total;
   }
@@ -50,19 +52,9 @@ class _CartScreenState extends State<CartScreen> {
       textDirection: TextDirection.rtl,
       child: Scaffold(
         backgroundColor: Colors.white,
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          elevation: 0,
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
-            onPressed: () => Navigator.pop(context),
-          ),
-          title: const Text(
-            'السلة',
-            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-          ),
-          centerTitle: true,
-        ),
+        appBar: CustomAppBar(title: 'السلة', isBack: false, notification: false),
+
+
         body: Column(
           children: [
             Expanded(

@@ -82,16 +82,24 @@ class _AddressScreenState extends State<AddressScreen> {
 
                 CustomButon(
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (c) => PaymentScreen(
-                          address:
-                              '${addressController.text}, ${flowrNumberController.text}',
-                          totalPrice: widget.totalPrice,
+                    if (_formKey.currentState!.validate()) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (c) => PaymentScreen(
+                            address:
+                                '${addressController.text}, ${flowrNumberController.text}',
+                            totalPrice: widget.totalPrice,
+                          ),
                         ),
-                      ),
-                    );
+                      );
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('من فضلك أكمل كل البيانات المطلوبة'),
+                        ),
+                      );
+                    }
                   },
                   title: 'التالى',
                 ),

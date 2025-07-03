@@ -67,10 +67,13 @@ class _AddPaymentMethodScreenState extends State<AddPaymentMethodScreen> {
                   hintText: '**** **** **** ****',
                   keyboardType: TextInputType.number,
                   validator: (value) {
-                    if (value == null || value.isEmpty || value.length != 16) {
+                    if (value == null ||
+                        value.isEmpty ||
+                        value.length != 16 ||
+                        !RegExp(r'^\d{16}$').hasMatch(value)) {
                       return 'الرجاء إدخال رقم بطاقة صحيح (16 رقمًا)';
                     }
-                    return null;
+                    return null; // ✅ لازم ترجع null لما تكون البيانات صحيحة
                   },
                 ),
                 Row(
@@ -117,12 +120,16 @@ class _AddPaymentMethodScreenState extends State<AddPaymentMethodScreen> {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {
-                      if (_formKey.currentState!.validate()) {
+                      if (_formKey.currentState != null &&
+                          _formKey.currentState!.validate()) {
                         final item = PaymentModel(
                           type: 'Visa',
-                          last4: _cardNumberController.text.substring(
-                            _cardNumberController.text.length - 4,
-                          ),
+                          last4: _cardNumberController.text.length >= 4
+                              ? _cardNumberController.text.substring(
+                                  _cardNumberController.text.length - 4,
+                                )
+                              : '0000', // أو أي قيمة افتراضية
+
                           expiry: _expiryDateController.text,
                           image: 'assets/icons/visa.svg',
                         );
@@ -157,9 +164,7 @@ class _AddPaymentMethodScreenState extends State<AddPaymentMethodScreen> {
       ),
     );
   }
-
 }
-
 
 class CustomTextFieldAddPayment extends StatelessWidget {
   final TextEditingController controller;
@@ -222,4 +227,3 @@ class CustomTextFieldAddPayment extends StatelessWidget {
     );
   }
 }
-
